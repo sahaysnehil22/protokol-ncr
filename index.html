@@ -68,7 +68,7 @@ h3{font-size:15px;margin:14px 0 4px}
 .sig-cell img{max-width:100%;max-height:60px}
 .doc h1,.doc h2,.doc h3,.doc p,.doc table,.doc tr,.doc td,.doc .photos-print,.doc .photos-print figure,.doc .sig-grid,.doc .sig-cell{break-inside:avoid;page-break-inside:avoid}
 @media print{
-  @page{size:A4;margin:0.5cm}
+  @page{size:A4;margin:0.5cm 0.5cm 0.5cm 2.5cm}
   @page{@bottom-center{content:"Página " counter(page) " de " counter(pages);font-size:11px}}
   body{background:#fff}
   .wrap{max-width:none;padding:0}
@@ -594,10 +594,10 @@ function buildDoc(){
   +'<h2>1. DATOS GENERALES</h2><table><tr><td>PROYECTO</td><td>'+esc(d.proyecto)+'</td></tr><tr><td>CLIENTE</td><td>'+esc(d.cliente)+'</td></tr><tr><td>CONSTRUCTOR</td><td>'+esc(d.constructor)+'</td></tr>'+(d.supervision?'<tr><td>SUPERVISIÓN</td><td>'+esc(d.supervision)+'</td></tr>':'')+'</table>'
   +'<h2>2. IDENTIFICACIÓN</h2><table><tr><td>UBICACIÓN</td><td>'+esc(d.ubicacion)+'</td></tr><tr><td>PROGRESIVA</td><td>'+esc(d.progresiva)+'</td></tr><tr><td>FECHA</td><td>'+esc(isoToDMY(d.fecha))+'</td></tr><tr><td>PLANO DE REF.</td><td>'+esc(d.planoRef)+'</td></tr></table>'
   +'<h3>TABLA DE ÍTEMS</h3><table><tr><th>Item</th><th>Etapa de obra</th><th>Responsable de no conformidad</th><th>Ubicación (nivel/piso/dpto/sector)</th><th>Elemento</th><th>Partida de trabajo</th></tr>'+itemsRows+'</table>'
-  // Firmas como en el documento de Muse: solo dos títulos arriba (Residente de Obra y Especialista de Calidad); el resto de casillas queda en blanco para firmar a mano la copia impresa.
-  +'<h2>FIRMAS</h2><table><tr><td style="height:27mm;vertical-align:top"><strong>RESIDENTE DE OBRA</strong></td><td style="height:27mm;vertical-align:top"><strong>SUPERVISOR DE OBRA</strong></td></tr><tr><td style="height:27mm"></td><td style="height:27mm"></td></tr><tr><td style="height:27mm"></td><td style="height:27mm"></td></tr></table>'
   +'<h2>3. DESCRIPCIÓN DE LA NCR</h2><p>'+esc(d.descripcion).replace(/\n/g,"<br>")+'</p><h3>FOTOS DE EVIDENCIA</h3><div class="photos-print">'+photosHtml+'</div><p>Impacto: '+chk("LEVE")+' Leve &nbsp; '+chk("MODERADO")+' Moderado &nbsp; '+chk("GRAVE")+' Grave</p>'
-  +'<h2>REGISTRO DEL DOCUMENTO</h2><table><tr><td style="width:40%">Fecha y hora de registro</td><td>'+fmtRegistro()+'</td></tr></table><p class="muted">Registro generado automáticamente: la fecha y hora de registro corresponden al momento en que se generó este documento.</p>';
+  +'<h2>REGISTRO DEL DOCUMENTO</h2><table><tr><td style="width:40%">Fecha y hora de registro</td><td>'+fmtRegistro()+'</td></tr></table><p class="muted">Registro generado automáticamente: la fecha y hora de registro corresponden al momento en que se generó este documento.</p>'
+  // Firmas como en el documento de Muse: solo dos títulos arriba (Residente de Obra y Especialista de Calidad); el resto de casillas queda en blanco para firmar a mano la copia impresa.
+  +'<h2>FIRMAS</h2><table><tr><td style="height:27mm;vertical-align:top"><strong>RESIDENTE DE OBRA</strong></td><td style="height:27mm;vertical-align:top"><strong>SUPERVISOR DE OBRA</strong></td></tr><tr><td style="height:27mm"></td><td style="height:27mm"></td></tr><tr><td style="height:27mm"></td><td style="height:27mm"></td></tr></table>';
 }
 $("btnGenerate").onclick=async ()=>{
   updatePill();
